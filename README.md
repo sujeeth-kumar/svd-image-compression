@@ -70,31 +70,29 @@ The first six singular components represent the orthogonal basis images used to 
 
 # Mathematical Background
 
-Given an image matrix
+An image can be represented as a matrix **A** of size **m × n**, where each element corresponds to a pixel intensity.
 
-\[
-A \in \mathbb{R}^{m \times n}
-\]
+Singular Value Decomposition (SVD) decomposes the matrix as:
 
-Singular Value Decomposition factors the matrix as
+```text
+A = U Σ Vᵀ
+```
 
-\[
-A = U\Sigma V^T
-\]
+where:
 
-where
+- **U** – Left Singular Vectors
+- **Σ** – Diagonal matrix containing Singular Values
+- **Vᵀ** – Right Singular Vectors
 
-- **U** → Left Singular Vectors
-- **Σ** → Singular Values
-- **Vᵀ** → Right Singular Vectors
+To compress the image, only the first **k** largest singular values are retained.
 
-The optimal rank-k approximation is
+The reconstructed image is obtained using the rank-k approximation:
 
-\[
-A_k = U_k\Sigma_kV_k^T
-\]
+```text
+Aₖ = Uₖ Σₖ Vₖᵀ
+```
 
-according to the **Eckart–Young–Mirsky Theorem**, which guarantees the best low-rank approximation in terms of reconstruction error.
+According to the **Eckart–Young–Mirsky Theorem**, this provides the best possible rank-k approximation of the original matrix while minimizing reconstruction error.
 
 ---
 
